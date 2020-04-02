@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Auxilary from "../../hoc/Auxilary";
+import Auxilary from "../../hoc/Auxilary/Auxilary";
 import Button from "../Button/Button";
 
 const OrderSummary = props => {

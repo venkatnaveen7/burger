@@ -8,7 +8,7 @@ const toolbar = props => (
   <div className={tollbarCss.Toolbar}>
     <DrawerToggler openSlideHandler={props.openSlideHandler}></DrawerToggler>
     <Logo />
-    <nav>
+    <nav className={tollbarCss.DesktopOnly}>
       <NavigationItems></NavigationItems>
     </nav>
   </div>
