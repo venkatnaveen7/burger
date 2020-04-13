@@ -21,6 +21,7 @@ class BurgerBuilder extends Component {
   };
 
   componentDidMount() {
+    console.log("BurgerBuilder Mount", this.props);
     axios
       .get("ingredients.json")
       .then(response => {
@@ -82,8 +83,21 @@ class BurgerBuilder extends Component {
   };
 
   continueOrder = () => {
+    console.log("");
+    let queryParams = [];
+    for (let i in this.state.ingredients) {
+      queryParams.push(
+        encodeURIComponent(i) +
+          "=" +
+          encodeURIComponent(this.state.ingredients[i])
+      );
+    }
+    this.props.history.push({
+      pathname: "/checkout",
+      search: "?" + queryParams.join("&")
+    });
     //alert("Wait");
-    this.setState({ loading: true });
+    /* this.setState({ loading: true });
     const orderData = {
       customeDetails: {
         name: "Raghu",
@@ -106,7 +120,7 @@ class BurgerBuilder extends Component {
       .catch(error => {
         console.log("Order Failed", error);
         this.setState({ purchasing: false, loading: false });
-      });
+      }); */
   };
 
   render() {

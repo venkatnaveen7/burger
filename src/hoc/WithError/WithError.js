@@ -47,7 +47,7 @@ const withError = (WrappedComponent, axios) => {
           <Modal show={this.state.error} modalClose={this.modalCloseCallBack}>
             {this.state.error ? this.state.error.message : null}
           </Modal>
-          <WrappedComponent></WrappedComponent>
+          <WrappedComponent {...this.props}></WrappedComponent>
         </Aux>
       );
     }
