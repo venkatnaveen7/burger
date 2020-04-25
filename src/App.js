@@ -3,6 +3,7 @@ import AppLayout from "./hoc/Layout/app-layout";
 import BurgerBuilder from "./Containers/BurgerBuilder/BurgerBuilder";
 import CheckOut from "./Containers/Checkout/Checkout";
 import { Route, Switch, withRouter } from "react-router-dom";
+import Orders from "./Containers/Orders/Orders";
 function App(props) {
   //const [show, setShow] = useState(false);
 
@@ -18,6 +19,7 @@ function App(props) {
     <div>
       <AppLayout>
         <Switch>
+          <Route path="/orders" component={Orders}></Route>
           <Route path="/checkout" component={CheckOut}></Route>
           <Route path="/" exact component={BurgerBuilder}></Route>
         </Switch>
