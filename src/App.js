@@ -4,6 +4,8 @@ import BurgerBuilder from "./Containers/BurgerBuilder/BurgerBuilder";
 import CheckOut from "./Containers/Checkout/Checkout";
 import { Route, Switch, withRouter } from "react-router-dom";
 import Orders from "./Containers/Orders/Orders";
+import Authenticate from "./Containers/Auth/Auth";
+import LogOut from "./Containers/LogOut/LogOut";
 function App(props) {
   //const [show, setShow] = useState(false);
 
@@ -21,7 +23,9 @@ function App(props) {
         <Switch>
           <Route path="/orders" component={Orders}></Route>
           <Route path="/checkout" component={CheckOut}></Route>
+          <Route path="/logout" exact component={LogOut}></Route>
           <Route path="/" exact component={BurgerBuilder}></Route>
+          <Route path="/auth" exact component={Authenticate}></Route>
         </Switch>
       </AppLayout>
     </div>

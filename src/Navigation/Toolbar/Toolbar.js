@@ -9,7 +9,9 @@ const toolbar = props => (
     <DrawerToggler openSlideHandler={props.openSlideHandler}></DrawerToggler>
     <Logo />
     <nav className={tollbarCss.DesktopOnly}>
-      <NavigationItems></NavigationItems>
+      <NavigationItems
+        isAuthenticated={props.isAuthenticated}
+      ></NavigationItems>
     </nav>
   </div>
 );

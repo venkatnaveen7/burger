@@ -3,8 +3,14 @@ import Auxilary from "../Auxilary/Auxilary";
 import cssClasses from "./app-layout.module.css";
 import Toolbar from "../../Navigation/Toolbar/Toolbar";
 import SideDrawer from "../../Navigation/SideDrawer/SideDrawer";
+import { connect } from "react-redux";
+import * as actions from "../../store/actions/index";
 
 class AppLayout extends Component {
+  componentDidMount() {
+    this.props.tryAutoLogin();
+  }
+
   state = {
     showBackDrop: false
   };
@@ -25,8 +31,12 @@ class AppLayout extends Component {
     return (
       <Auxilary>
         {/* <div>Toolbar,Slidebar,Backdrop</div> */}
-        <Toolbar openSlideHandler={this.openSlideHandler} />
+        <Toolbar
+          isAuthenticated={this.props.isAuthenticated}
+          openSlideHandler={this.openSlideHandler}
+        />
         <SideDrawer
+          isAuthenticated={this.props.isAuthenticated}
           show={this.state.showBackDrop}
           clicked={this.backDropClickhandler}
         ></SideDrawer>
@@ -36,4 +46,19 @@ class AppLayout extends Component {
   }
 }
 
-export default AppLayout;
+const mapPropsToState = state => {
+  return {
+    isAuthenticated: state.auth.token != null
+  };
+};
+
+const mapPropsToDispatch = dispatch => {
+  return {
+    tryAutoLogin: () => dispatch(actions.tryAutoLogin())
+  };
+};
+
+export default connect(
+  mapPropsToState,
+  mapPropsToDispatch
+)(AppLayout);
