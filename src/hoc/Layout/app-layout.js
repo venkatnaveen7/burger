@@ -7,9 +7,7 @@ import { connect } from "react-redux";
 import * as actions from "../../store/actions/index";
 
 class AppLayout extends Component {
-  componentDidMount() {
-    this.props.tryAutoLogin();
-  }
+  componentDidMount() {}
 
   state = {
     showBackDrop: false
@@ -52,13 +50,4 @@ const mapPropsToState = state => {
   };
 };
 
-const mapPropsToDispatch = dispatch => {
-  return {
-    tryAutoLogin: () => dispatch(actions.tryAutoLogin())
-  };
-};
-
-export default connect(
-  mapPropsToState,
-  mapPropsToDispatch
-)(AppLayout);
+export default connect(mapPropsToState)(AppLayout);

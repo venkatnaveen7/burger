@@ -17,10 +17,12 @@ const Order = props => {
           margin: "1px 2px ",
           textTransform: "uppercase",
           padding: "10px",
-          boxSizing: "border-box"
+          boxSizing: "border-box",
+          width: "80%",
+          boxShadow: "0 2px 3px #ccc"
         }}
       >
-        {obj.name} =>{obj.amount}
+        {obj.name} ({obj.amount})
       </span>
     );
   });
